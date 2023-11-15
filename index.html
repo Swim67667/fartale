@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fartale</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/site.webmanifest"
+    />
+    <link
+      rel="mask-icon"
+      href="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/safari-pinned-tab.svg"
+      color="#505151"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/favicon.ico"
+    />
+    <meta name="msapplication-TileColor" content="#090200" />
+    <meta
+      name="msapplication-config"
+      content="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <style>
+      body {
+        overflow: hidden;
+        background-color: black;
+        user-select: none;
+      }
+      img {
+        user-select: none;
+      }
+      div.introBg {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        background-color: skyblue;
+        height: 100%;
+        width: 100%;
+      }
+      font.titleTopText {
+        position: fixed;
+        color: white;
+        padding-left: 29%;
+        top: 70%;
+        font-size: 60px;
+        text-shadow: 2px 2px 4px #000000;
+      }
+      font.titleBottomText {
+        position: fixed;
+        color: #01f5b9;
+        padding-left: 40%;
+        top: 77%;
+        font-size: 50px;
+        text-shadow: 2px 2px 4px #000000;
+      }
+      div.cloud1 {
+        background-color: white;
+        border-radius: 100px;
+        width: 25%;
+        height: 10%;
+        margin-left: 50px;
+        margin-top: 15px;
+        box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+      }
+      div.cloud2 {
+        background-color: white;
+        border-radius: 100px;
+        width: 20%;
+        height: 8%;
+        margin-left: 500px;
+        margin-top: 20px;
+        box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+      }
+      div.cloud3 {
+        position: fixed;
+        background-color: white;
+        border-radius: 100px;
+        width: 30%;
+        height: 9%;
+        margin-left: 900px;
+        top: 8px;
+        box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+      }
+      div.cloudtext {
+        color: white;
+      }
+      div.introBg2 {
+        position: fixed;
+        background-color: black;
+        height: 100%;
+        width: 100%;
+        top: 0px;
+        left: 0px;
+      }
+      img.map {
+        position: fixed;
+        width: 100%;
+        height: 80%;
+        top: 10%;
+      }
+      img.plr {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        width: 4%;
+        height: 5%;
+      }
+      div.text {
+        border-style: solid;
+        border-color: white;
+        position: fixed;
+        top: 10%;
+        left: 30%;
+        background-color: black;
+        color: white;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+      }
+      img.intro {
+        position: fixed;
+        left: 0%;
+        top: 0%;
+        width: 100%;
+        height: 100%;
+      }
+      .fade {
+        opacity: 0;
+        transition: opacity 0.5s ease-out;
+        /* Transition the opacity property over 0.5 seconds */
+      }
+      #battleinfo {
+        width: 90%;
+        position: fixed;
+        left: 5%;
+        right: 5%;
+        height: 5%;
+        top: 77%;
+        text-align: center;
+        color: white;
+        font-size: 200%;
+      }
+      #battle {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0%;
+        top: 0%;
+        background-color: black;
+        visibility: hidden;
+      }
+      #fight {
+        transition: width 1s, height 1s, left 1s, top 1s;
+        width: 90%;
+        height: 15%;
+        position: fixed;
+        left: 5%;
+        right: 5%;
+        top: 60%;
+        overflow: hidden;
+        border-style: solid;
+        border-color: white;
+        background-color: black;
+        color: white;
+      }
+      div.fight {
+        transition: width 1s, height 1s, left 1s, top 1s;
+        width: 90%;
+        height: 15%;
+        position: fixed;
+        left: 5%;
+        right: 5%;
+        top: 60%;
+        overflow: hidden;
+        border-style: solid;
+        border-color: white;
+        background-color: black;
+        color: white;
+        font-size: 150%;
+      }
+      #fightText {
+        color: white;
+      }
+      #attack {
+        border-style: solid;
+        border-color: darkorange;
+        background-color: #f9b404;
+        color: white;
+        width: 15%;
+        height: 7%;
+        font-size: 100%;
+        position: fixed;
+        top: 85%;
+        left: 5%;
+      }
+      #act {
+        border-style: solid;
+        border-color: darkorange;
+        background-color: #f9b404;
+        color: white;
+        width: 15%;
+        height: 7%;
+        font-size: 100%;
+        position: fixed;
+        top: 85%;
+        left: 30%;
+      }
+      #item {
+        border-style: solid;
+        border-color: darkorange;
+        background-color: #f9b404;
+        color: white;
+        width: 15%;
+        height: 7%;
+        font-size: 100%;
+        position: fixed;
+        top: 85%;
+        right: 30%;
+      }
+      #mercy {
+        border-style: solid;
+        border-color: darkorange;
+        background-color: #f9b404;
+        color: white;
+        width: 15%;
+        height: 7%;
+        font-size: 100%;
+        position: fixed;
+        top: 85%;
+        right: 5%;
+      }
+      #enemy {
+        height: 50%;
+        width: 30%;
+        position: fixed;
+        top: 5%;
+        left: 35%;
+        right: 35%;
+        transition: 1s;
+      }
+      #slide {
+        transition: 6s;
+      }
+    </style>
+  </head>
+  <body onkeydown="keyd()" onkeyup="keyu()">
+    <img
+      src="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/map1.jpg?v=1696822490073 "
+      id="map"
+      alt="map"
+      class="map"
+    />
+    <img
+      src="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/player.png?v=1696645522676"
+      id="plr"
+      class="plr"
+      alt="plr"
+    />
+    <div class="text" id="text">
+      <h1 id="demo"></h1>
+    </div>
+
+    <img
+      src="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/intro%201.png?v=1696808164041"
+      id="intro"
+      alt="intro"
+      class="intro"
+    />
+
+    <div id="battle" class="battle">
+      <div id="fight">
+        <font id="fightText" size="6%"></font>
+      </div>
+      <button id="attack" onclick="attack()">FIGHT</button>
+      <button id="act" onclick="act()">ACT</button>
+      <button id="item" onclick="item()">ITEM</button>
+      <button id="mercy" onclick="mercy()">MERCY</button>
+      <div id="battleinfo">
+        <font id="lv" size="5"
+          >lv:1
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          hp:20/20</font
+        >
+      </div>
+      <img
+        id="enemy"
+        src="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/flowerM.gif?v=1697417135866"
+        alt="enemy you are facing"
+      />
+    </div>
+    <div id="talk" class="fight">
+      * hello I am ?? the one person who lives in the ruins
+    </div>
+    <script>
+      var fight = 0;
+      var battle = 0;
+      var start = 1;
+      var hp = 20;
+      var mhp = 20;
+      var s = 1;
+      var o = 0;
+      var r = 0;
+      var x = 23;
+      var y = 47;
+      var g = 0;
+      var b = 0;
+      var lvl = 0;
+      var isImageChanged = false;
+      var ehp = 0;
+      var talks = 0;
+      var lv = 1;
+      var dur = 0;
+      var potential = 0;
+      var txt =
+        "a long time ago there was a myth of a place very far away.                                   It was said to have magical creatures but also                                                                                monsters.                                                              but of course it was just a myth right                                                                                                                                                                               or so you thought.                                                                                                                                                                         ";
+      var speed = 13;
+      var ftxt = "";
+      var genemy = "";
+      var items = ["", ""];
+      var inItems = 0;
+      var ea = 0;
+      var inText = 0;
+      var InTexts = 0;
+      var Ttxt = "";
+      if (lvl > 0) {
+        document.getElementById("intro").style.visibility = "hidden";
+        document.getElementById("text").style.visibility = "hidden";
+      }
+
+      document.getElementById("talk").style.visibility = "hidden";
+
+      function toggleFade(elem) {
+        const element = document.getElementById("intro");
+        element.classList.toggle("fade");
+      }
+
+      function typeWriter() {
+        if (b < txt.length) {
+          document.getElementById("demo").innerHTML += txt.charAt(b);
+          b += 1;
+          setTimeout(typeWriter, speed);
+        }
+        if (b == txt.length && lvl == 0) {
+          document.getElementById("intro").style.display = "none";
+          txt =
+            "One day when you were walking down the street you found a mysterious bottle cap                                                                                                                                                                                                                              you pick it up and then suddenly                         your in a very different place.                                                                                                                                                                                     ";
+          document.getElementById("demo").innerHTML = "";
+          b = 0;
+          typeWriter();
+          lvl = 0.1;
+        }
+        if (b == txt.length && lvl == 0.1) {
+          speed = 1000;
+          txt = ".....";
+          document.getElementById("demo").innerHTML = "";
+          b = 0;
+          typeWriter();
+          lvl = 0.2;
+        }
+        if (b == txt.length && lvl == 0.2) {
+          speed = 13;
+          b = 0;
+          o = 1;
+          fade("text", 1000);
+          lvl = 1;
+        }
+      }
+
+      function fade(elem, time) {
+        document.getElementById("text").style.opacity = o;
+        o -= 0.01;
+
+        if (r >= 100) {
+          r = 0;
+        } else {
+          setTimeout(fade, 20);
+        }
+      }
+
+      function place() {
+        x = player.x;
+        y = player.y;
+        if (ea == 1) {
+          document.getElementById("soul").style.top = String(soul.y) + "%";
+          document.getElementById("soul").style.left = String(soul.x) + "%";
+        }
+        document.getElementById("plr").style.top = String(y) + "%";
+        document.getElementById("plr").style.left = String(x) + "%";
+      }
+      setInterval(place, 1);
+
+      function keyd() {
+        if (event.keyCode == 39) {
+          player.x += player.speed;
+          if (!isImageChanged) {
+            // Check if image has not changed before
+            document.getElementById("plr").src =
+              "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/playerW.gif?v=1696645522676";
+            isImageChanged = true; // Set the flag to true
+          }
+        } else if (event.keyCode == 37) {
+          player.x -= player.speed;
+          if (!isImageChanged) {
+            document.getElementById("plr").src =
+              "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/player2w.gif?v=1696863473495";
+            isImageChanged = true;
+          }
+        } else if (event.keyCode == 40) {
+          player.y += player.speed;
+          if (!isImageChanged) {
+            document.getElementById("plr").src =
+              "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/playerDW.gif?v=1698788934800";
+            isImageChanged = true;
+          }
+        } else if (event.keyCode == 38) {
+          player.y -= player.speed;
+
+          if (!isImageChanged) {
+            document.getElementById("plr").src =
+              "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/playerUW.gif?v=1698625998483";
+            isImageChanged = true;
+          }
+        } else if (event.keyCode == 32) {
+          if (start == 1) {
+            start = 0;
+            typeWriter();
+            toggleFade();
+          } else if (fight == 1) {
+            const leftPercentage =
+              (Number(document.getElementById("slide").offsetLeft) /
+                Number(document.getElementById("fight").offsetWidth)) *
+              100;
+
+            potential = leftPercentage;
+
+            //alert(String(potential));
+
+            var damage = 10 + potential * (lv / 4);
+            if (potential >= 101) {
+              damage = 0;
+            } else {
+              ehp -= Math.round(damage);
+            }
+            if (ehp >= 0) {
+              setTimeout(function () {
+                ftxt =
+                  "* you did " +
+                  Math.round(damage) +
+                  " damage <br/> * " +
+                  genemy +
+                  " has " +
+                  ehp +
+                  " hp left";
+              }, 100);
+            }
+            document.getElementById("slide").remove();
+            document.getElementById("fightPo").remove();
+            if (ehp > 0) {
+              setTimeout(function () {
+                fight = 0;
+                enemyAttack();
+              }, 2000);
+            }
+          }
+        } else if (event.keyCode == 90) {
+          if (inItems == 1) {
+            if (items[0] == "trash") {
+              hp += 10;
+              items[0] = "";
+
+              if (hp > mhp) {
+                hp -= hp - mhp;
+                ftxt = "* your hp was maxed out";
+              } else {
+                ftxt = "* you healed 10hp";
+              }
+            }
+          }
+          setTimeout(function () {
+            enemyAttack();
+          }, 2000);
+        } else if (event.keyCode == 88) {
+          if (inItems == 1) {
+            if (items[1] == "trash") {
+              hp += 10;
+
+              items[1] = "";
+              if (hp > mhp) {
+                hp -= hp - mhp;
+                ftxt = "* your hp was maxed out";
+              } else {
+                ftxt = "* you healed 10hp";
+              }
+            } else {
+              ftxt = "* you dont have a item there";
+            }
+          }
+          setTimeout(function () {
+            enemyAttack();
+          }, 2000);
+        } else if (event.keyCode == 87) {
+          if (soul.y >= 0) {
+            soul.y -= soul.speed;
+          }
+        } else if (event.keyCode == 83) {
+          if (soul.y <= 90) {
+            soul.y += soul.speed;
+          }
+        } else if (event.keyCode == 65) {
+          if (soul.x > 0) {
+            soul.x -= soul.speed;
+          }
+        } else if (event.keyCode == 68) {
+          if (soul.x <= 90) {
+            soul.x += soul.speed;
+          }
+        }
+      }
+
+      function keyu() {
+        if (event.keyCode == 39) {
+          isImageChanged = false;
+          document.getElementById("plr").src =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/player.png?v=1696645522676";
+        } else if (event.keyCode == 37) {
+          document.getElementById("plr").src =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/player2.png?v=1696645522676";
+          isImageChanged = false;
+        } else if (event.keyCode == 40) {
+          document.getElementById("plr").src =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/playerD.png?v=1698626954132";
+          isImageChanged = false;
+        } else if (event.keyCode == 38) {
+          document.getElementById("plr").src =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/playerU.png?v=1698625249883";
+          isImageChanged = false;
+        }
+      }
+
+      var player = {
+        x: x,
+        y: y,
+        speed: 1,
+      };
+      function encounter(enemy) {
+        genemy = enemy;
+        if (dur <= 100) {
+          ftxt = "* " + enemy + " aproaches you.";
+        }
+        //alert(dur)
+
+        if (enemy == "flowebro" && dur == 0) {
+          ehp = 100;
+          document.getElementById("enemy").scr =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/flowerM.gif?v=1697417135866";
+        }
+        if (enemy == "flowebro" && dur >= 1000 && dur <= 1100 && ea == 0) {
+          ftxt = "* Hi'a pal your new here arntch ya";
+          //alert(dur)
+        }
+        if (enemy == "flowebro" && dur >= 4000 && dur <= 4100 && ea == 0) {
+          ftxt = "";
+          ftxt = ftxt + "* let me show you how this works around here.";
+          //alert(dur)
+        }
+        if (enemy == "flowebro" && dur >= 6000 && dur <= 6050 && ea == 0) {
+          //ftxt = "";
+          ftxt =
+            "* let me show you how this works around here. <br/> * press the fight button with your mouse <br/>* use w a s d to move";
+          //alert(dur)
+        }
+
+        document.getElementById("fightText").innerHTML = ftxt;
+        document.getElementById("battle").style.visibility = "visible";
+
+        if (ehp > 0) {
+          dur += 1;
+
+          setTimeout(function () {
+            encounter(enemy);
+          }, 1);
+        } else {
+          if (dur < 999999999999999999999999999999) {
+            var random = String(Math.random() / 2);
+            ftxt = "* you won " + String(Number(random).toFixed(2)) + " lv's";
+
+            lv += Number(Number(random).toFixed(2));
+            //alert(random.toFixed(2));
+            dur = 9999999999999999999999999999999;
+            setTimeout(function () {
+              document.getElementById("battle").style.visibility = "hidden";
+            }, 3000);
+          }
+          ftxt = "* you won " + String(Number(random).toFixed(2)) + " lv's";
+        }
+        if (dur >= 999999999999999999999999999999) {
+          console.log(ftxt);
+          ftxt = "* you won " + String(Number(random).toFixed(2)) + " lv's";
+        }
+        document.getElementById("fightText").innerHTML = ftxt;
+      }
+      function hitboxes() {
+        if (lvl == 1 && y <= 24) {
+          //alert("hello")
+          player.y += 1;
+        }
+        if (lvl == 1 && x <= 19) {
+          //alert("hello")
+          player.x += 1;
+        }
+        if (lvl == 1 && y >= 67) {
+          //alert("hello")
+          player.y -= 1;
+        }
+        if (lvl == 1 && y <= 54 && x >= 83) {
+          //alert("hello");
+          player.x -= 1;
+        }
+        if (lvl == 1 && y > 53 && x >= 98) {
+          lvl = 2;
+          player.x -= 1;
+          player.x = 49;
+          player.y = 80;
+        }
+        if (lvl == 2 && y <= 55 && dur == 0) {
+          dur = 0;
+          encounter("flowebro");
+          player.y += 1;
+        }
+        if (lvl == 2 && y <= 30 && x >= 40 && x <= 60) {
+          lvl = 3;
+          dur = 0;
+          player.x = 49;
+          player.y = 80;
+        }
+        if (lvl == 2 && x <= 0) {
+          player.x += 1;
+        }
+        if (lvl == 2 && x >= 99) {
+          player.x -= 1;
+        }
+        if (lvl == 2 && y >= 86) {
+          player.y -= 1;
+        }
+        if (lvl == 2 && y <= 8) {
+          player.y += 1;
+        }
+        if (lvl == 3 && y >= 70 && x <= 36) {
+          player.x += 1;
+        }
+        if (lvl == 3 && y >= 66 && x <= 34) {
+          player.y -= 1;
+        }
+        if (lvl == 3 && y >= 20 && y <= 66 && x <= 13.5) {
+          player.x += 1;
+        }
+        if (lvl == 3 && y >= 86) {
+          player.y -= 1;
+        }
+        if (lvl == 3 && y >= 70 && x >= 63) {
+          player.x -= 1;
+        }
+        if (lvl == 3 && y >= 66 && x >= 65) {
+          player.y -= 1;
+        }
+        if (lvl == 3 && y >= 20 && y <= 66 && x >= 84) {
+          player.x -= 1;
+        }
+        if (lvl == 3 && y <= 9) {
+          player.y += 1;
+          lvl = 4;
+          inTalks = 0;
+        }
+        if (lvl == 3 && y == 66) {
+          inTalks = 1;
+        }
+        if (ea == 1) {
+          const proj1 = document.getElementById("proj1");
+          const proj2 = document.getElementById("proj2");
+          const proj3 = document.getElementById("proj3");
+          let dmg = 0.01;
+          if (genemy == "flowebro") {
+            dmg = 0.001;
+          }
+          const s = document.getElementById("soul");
+          if (isTouching(s, proj1)) {
+            hp -= dmg;
+          }
+          if (isTouching(s, proj2)) {
+            hp -= dmg;
+          }
+          if (isTouching(s, proj3)) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj4"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj5"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj6"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj7"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj8"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj9"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj10"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj11"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj12"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj13"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj14"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj15"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj16"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj17"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj18"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj19"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj20"))) {
+            hp -= dmg;
+          }
+          if (isTouching(s, document.getElementById("proj21"))) {
+            hp -= dmg;
+          }
+        }
+      }
+      setInterval(hitboxes, 1);
+
+      function game() {
+        document.getElementById("battleinfo").innerHTML =
+          "lv:" +
+          String(lv) +
+          " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hp: " +
+          String(Math.round(hp)) +
+          "/" +
+          mhp;
+        if (lvl == 1) {
+          document.getElementById("map").src =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/map1.jpg?v=1696645522676";
+        }
+        if (lvl == 2) {
+          document.getElementById("map").src =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/map2.jpg?v=1696645522676";
+        }
+        if (lvl == 2 && dur >= 10) {
+          document.getElementById("map").src =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/map2NF.jpg?v=1698617567597";
+        }
+        if (lvl == 3) {
+          document.getElementById("map").src =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/map3.jpg?v=1699563465102";
+        }
+
+        if (inText == 0) {
+          document.getElementById("talk").style.visibility = "hidden";
+        } else {
+          document.getElementById("talk").style.visibility = "visible";
+        }
+
+        document.getElementById("talk").style.innerHTML = Ttxt;
+        if (lvl == 3 && inTalks == 1) {
+          Ttxt = "* hello I am  the one person who lives in the ruins";
+        }
+      }
+      setInterval(game, 1);
+      function attack() {
+        if (
+          dur >= 5 &&
+          dur < 999999999999999999999999999999 &&
+          ea == 0 &&
+          fight == 0
+        ) {
+          fight = 1;
+          ftxt = "";
+          const image = document.createElement("img");
+          image.src =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/fightPo.jpg?v=1698620766366";
+          image.alt = "fight";
+          image.style.width = "100%";
+          image.style.height = "100%";
+          image.style.position = "absolute";
+          image.style.top = "0%";
+          image.style.left = "0%";
+          image.id = "fightPo";
+
+          const container = document.getElementById("fight");
+          container.appendChild(image);
+          const slidediv = document.createElement("div");
+          slidediv.style.height = "100%";
+          slidediv.style.width = "3%";
+          slidediv.style.backgroundColor = "white";
+          slidediv.style.position = "absolute";
+          slidediv.style.top = "0%";
+          slidediv.style.left = "1%";
+          slidediv.id = "slide";
+          slidediv.classList.add("slide");
+          container.appendChild(slidediv);
+          setTimeout(function () {
+            document.getElementById("slide").style.left = "110%";
+          }, 100);
+        }
+      }
+      function act() {
+        if (ea == 0) {
+          ftxt = "* you talked to " + genemy + ".";
+          talks = 0;
+          if (genemy == "flowebro") {
+            talks = 0;
+            ftxt += "<br/> * it seems that talking to flowebro won't do much.";
+          }
+          setTimeout(function () {
+            enemyAttack();
+          }, 2000);
+        }
+      }
+      function mercy() {
+        if (ea == 0) {
+          if (genemy == "flowebro" && talks == 2) {
+            ehp = -10;
+          } else if (genemy == "flowebro") {
+            ftxt = "* flowebro refuses to back down and never gives up";
+            setTimeout(function () {
+              enemyAttack();
+            }, 2000);
+          }
+        }
+      }
+      function item() {
+        if (ea == 0) {
+          ea = 1;
+          if (items[0] || items[1]) {
+            inItems = 1;
+            ftxt =
+              "* press z to use " +
+              items[0] +
+              "<br/>* press x to use " +
+              items[1];
+          } else {
+            ftxt = "* you have no items";
+            setTimeout(function () {
+              enemyAttack();
+            }, 2000);
+          }
+        }
+      }
+      var soul = {
+        x: 46,
+        y: 45,
+        speed: 4,
+      };
+      function enemyAttack() {
+        ea = 1;
+        ftxt = "";
+        document.getElementById("fight").style.width = "20%";
+        document.getElementById("fight").style.height = "21%";
+        document.getElementById("fight").style.left = "38%";
+        document.getElementById("fight").style.top = "50%";
+        document.getElementById("enemy").style.top = "0%";
+        document.getElementById("enemy").style.height = "49%";
+        const image = document.createElement("img");
+        soul.x = 46;
+        soul.y = 45;
+        image.src =
+          "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/soul.png?v=1698977770993";
+        image.alt = "your soul";
+        image.style.width = "5%";
+        image.style.height = "5%";
+        image.style.position = "absolute";
+        image.style.top = String(soul.y) + "%";
+        image.style.left = String(soul.x) + "%";
+        image.id = "soul";
+
+        const container = document.getElementById("fight");
+        container.appendChild(image);
+        if (genemy == "flowebro") {
+          setTimeout(function () {
+            const p1 = document.createElement("div");
+            const container = document.getElementById("fight");
+            p1.style.position = "absolute";
+            p1.style.width = "2%";
+            p1.style.height = "2%";
+            p1.id = "proj1";
+            p1.style.top = "1%";
+            p1.style.left = "1%";
+            p1.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p1.style.transition = "2s";
+            p1.style.borderRadius = "50px";
+
+            container.appendChild(p1);
+            const p2 = document.createElement("div");
+
+            p2.style.position = "absolute";
+            p2.style.width = "2%";
+            p2.style.height = "2%";
+            p2.id = "proj2";
+            p2.style.top = "0%";
+            p2.style.left = "20%";
+            p2.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p2.style.transition = "2s";
+            p2.style.borderRadius = "50px";
+
+            container.appendChild(p2);
+            const p3 = document.createElement("div");
+
+            p3.style.position = "absolute";
+            p3.style.width = "2%";
+            p3.style.height = "2%";
+            p3.id = "proj3";
+            p3.style.top = "0%";
+            p3.style.left = "40%";
+            p3.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p3.style.transition = "2s";
+            p3.style.borderRadius = "50px";
+
+            container.appendChild(p3);
+            const p4 = document.createElement("div");
+
+            p4.style.position = "absolute";
+            p4.style.width = "2%";
+            p4.style.height = "2%";
+            p4.id = "proj4";
+            p4.style.top = "0%";
+            p4.style.left = "60%";
+            p4.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p4.style.transition = "2s";
+            p4.style.borderRadius = "50px";
+
+            container.appendChild(p4);
+            const p5 = document.createElement("div");
+
+            p5.style.position = "absolute";
+            p5.style.width = "2%";
+            p5.style.height = "2%";
+            p5.id = "proj5";
+            p5.style.top = "0%";
+            p5.style.left = "80%";
+            p5.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p5.style.transition = "2s";
+            p5.style.borderRadius = "50px";
+
+            container.appendChild(p5);
+            const p7 = document.createElement("div");
+
+            p7.style.position = "absolute";
+            p7.style.width = "2%";
+            p7.style.height = "2%";
+            p7.id = "proj7";
+            p7.style.top = "20%";
+            p7.style.left = "97%";
+            p7.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p7.style.transition = "2s";
+            p7.style.borderRadius = "50px";
+
+            container.appendChild(p7);
+            const p6 = document.createElement("div");
+
+            p6.style.position = "absolute";
+            p6.style.width = "2%";
+            p6.style.height = "2%";
+            p6.id = "proj6";
+            p6.style.top = "1%";
+            p6.style.left = "97%";
+            p6.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p6.style.transition = "2s";
+            p6.style.borderRadius = "50px";
+
+            container.appendChild(p6);
+            const p8 = document.createElement("div");
+
+            p8.style.position = "absolute";
+            p8.style.width = "2%";
+            p8.style.height = "2%";
+            p8.id = "proj8";
+            p8.style.top = "40%";
+            p8.style.left = "97%";
+            p8.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p8.style.transition = "2s";
+            p8.style.borderRadius = "50px";
+
+            container.appendChild(p8);
+            const p9 = document.createElement("div");
+
+            p9.style.position = "absolute";
+            p9.style.width = "2%";
+            p9.style.height = "2%";
+            p9.id = "proj9";
+            p9.style.top = "60%";
+            p9.style.left = "97%";
+            p9.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p9.style.transition = "2s";
+            p9.style.borderRadius = "50px";
+
+            container.appendChild(p9);
+            const p10 = document.createElement("div");
+
+            p10.style.position = "absolute";
+            p10.style.width = "2%";
+            p10.style.height = "2%";
+            p10.id = "proj10";
+            p10.style.top = "40%";
+            p10.style.left = "97%";
+            p10.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p10.style.transition = "2s";
+            p10.style.borderRadius = "50px";
+
+            container.appendChild(p10);
+            const p11 = document.createElement("div");
+
+            p11.style.position = "absolute";
+            p11.style.width = "2%";
+            p11.style.height = "2%";
+            p11.id = "proj11";
+            p11.style.top = "80%";
+            p11.style.left = "97%";
+            p11.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p11.style.transition = "2s";
+            p11.style.borderRadius = "50px";
+
+            container.appendChild(p11);
+            const p12 = document.createElement("div");
+
+            p12.style.position = "absolute";
+            p12.style.width = "2%";
+            p12.style.height = "2%";
+            p12.id = "proj12";
+            p12.style.top = "97%";
+            p12.style.left = "97%";
+            p12.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p12.style.transition = "2s";
+            p12.style.borderRadius = "50px";
+
+            container.appendChild(p12);
+            const p13 = document.createElement("div");
+
+            p13.style.position = "absolute";
+            p13.style.width = "2%";
+            p13.style.height = "2%";
+            p13.id = "proj13";
+            p13.style.top = "97%";
+            p13.style.left = "80%";
+            p13.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p13.style.transition = "2s";
+            p13.style.borderRadius = "50px";
+
+            container.appendChild(p13);
+            const p14 = document.createElement("div");
+
+            p14.style.position = "absolute";
+            p14.style.width = "2%";
+            p14.style.height = "2%";
+            p14.id = "proj14";
+            p14.style.top = "97%";
+            p14.style.left = "60%";
+            p14.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p14.style.transition = "2s";
+            p14.style.borderRadius = "50px";
+
+            container.appendChild(p14);
+            const p15 = document.createElement("div");
+
+            p15.style.position = "absolute";
+            p15.style.width = "2%";
+            p15.style.height = "2%";
+            p15.id = "proj15";
+            p15.style.top = "97%";
+            p15.style.left = "40%";
+            p15.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p15.style.transition = "2s";
+            p15.style.borderRadius = "50px";
+
+            container.appendChild(p15);
+            const p16 = document.createElement("div");
+
+            p16.style.position = "absolute";
+            p16.style.width = "2%";
+            p16.style.height = "2%";
+            p16.id = "proj16";
+            p16.style.top = "97%";
+            p16.style.left = "20%";
+            p16.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p16.style.transition = "2s";
+            p16.style.borderRadius = "50px";
+
+            container.appendChild(p16);
+            const p17 = document.createElement("div");
+
+            p17.style.position = "absolute";
+            p17.style.width = "2%";
+            p17.style.height = "2%";
+            p17.id = "proj17";
+            p17.style.top = "97%";
+            p17.style.left = "1%";
+            p17.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p17.style.transition = "2s";
+            p17.style.borderRadius = "50px";
+
+            container.appendChild(p17);
+            const p18 = document.createElement("div");
+
+            p18.style.position = "absolute";
+            p18.style.width = "2%";
+            p18.style.height = "2%";
+            p18.id = "proj18";
+            p18.style.top = "80%";
+            p18.style.left = "0%";
+            p18.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p18.style.transition = "2s";
+            p18.style.borderRadius = "50px";
+
+            container.appendChild(p18);
+            const p19 = document.createElement("div");
+
+            p19.style.position = "absolute";
+            p19.style.width = "2%";
+            p19.style.height = "2%";
+            p19.id = "proj19";
+            p19.style.top = "60%";
+            p19.style.left = "0%";
+            p19.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p19.style.transition = "2s";
+            p19.style.borderRadius = "50px";
+
+            container.appendChild(p19);
+            const p20 = document.createElement("div");
+
+            p20.style.position = "absolute";
+            p20.style.width = "2%";
+            p20.style.height = "2%";
+            p20.id = "proj20";
+            p20.style.top = "40%";
+            p20.style.left = "0%";
+            p20.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p20.style.transition = "2s";
+            p20.style.borderRadius = "50px";
+
+            container.appendChild(p20);
+            const p21 = document.createElement("div");
+
+            p21.style.position = "absolute";
+            p21.style.width = "2%";
+            p21.style.height = "2%";
+            p21.id = "proj21";
+            p21.style.top = "20%";
+            p21.style.left = "0%";
+            p21.style.backgroundColor = "white";
+            //p.style.borderColor="black"
+            p21.style.transition = "2s";
+            p21.style.borderRadius = "50px";
+
+            container.appendChild(p21);
+          }, 600);
+
+          setTimeout(function () {
+            document.getElementById("proj1").style.top = "48%";
+            document.getElementById("proj1").style.left = "48%";
+            document.getElementById("proj2").style.top = "48%";
+            document.getElementById("proj2").style.left = "48%";
+            document.getElementById("proj3").style.top = "48%";
+            document.getElementById("proj3").style.left = "48%";
+            document.getElementById("proj4").style.top = "48%";
+            document.getElementById("proj4").style.left = "48%";
+            document.getElementById("proj5").style.top = "48%";
+            document.getElementById("proj5").style.left = "48%";
+            document.getElementById("proj6").style.top = "48%";
+            document.getElementById("proj6").style.left = "48%";
+            document.getElementById("proj7").style.top = "48%";
+            document.getElementById("proj7").style.left = "48%";
+            document.getElementById("proj8").style.top = "48%";
+            document.getElementById("proj8").style.left = "48%";
+            document.getElementById("proj9").style.top = "48%";
+            document.getElementById("proj9").style.left = "48%";
+            document.getElementById("proj10").style.top = "48%";
+            document.getElementById("proj10").style.left = "48%";
+            document.getElementById("proj11").style.top = "48%";
+            document.getElementById("proj11").style.left = "48%";
+            document.getElementById("proj12").style.top = "48%";
+            document.getElementById("proj12").style.left = "48%";
+            document.getElementById("proj13").style.top = "48%";
+            document.getElementById("proj13").style.left = "48%";
+            document.getElementById("proj14").style.top = "48%";
+            document.getElementById("proj14").style.left = "48%";
+            document.getElementById("proj15").style.top = "48%";
+            document.getElementById("proj15").style.left = "48%";
+            document.getElementById("proj16").style.top = "48%";
+            document.getElementById("proj16").style.left = "48%";
+            document.getElementById("proj17").style.top = "48%";
+            document.getElementById("proj17").style.left = "48%";
+            document.getElementById("proj18").style.top = "48%";
+            document.getElementById("proj18").style.left = "48%";
+            document.getElementById("proj19").style.top = "48%";
+            document.getElementById("proj19").style.left = "48%";
+            document.getElementById("proj20").style.top = "48%";
+            document.getElementById("proj20").style.left = "48%";
+            document.getElementById("proj21").style.top = "48%";
+            document.getElementById("proj21").style.left = "48%";
+          }, 2900);
+
+          setTimeout(function () {
+            document.getElementById("soul").remove();
+            document.getElementById("proj1").remove();
+            document.getElementById("proj2").remove();
+            document.getElementById("proj3").remove();
+            document.getElementById("proj4").remove();
+            document.getElementById("proj5").remove();
+            document.getElementById("proj6").remove();
+            document.getElementById("proj7").remove();
+            document.getElementById("proj8").remove();
+            document.getElementById("proj9").remove();
+            document.getElementById("proj10").remove();
+            document.getElementById("proj11").remove();
+            document.getElementById("proj12").remove();
+            document.getElementById("proj13").remove();
+            document.getElementById("proj14").remove();
+            document.getElementById("proj15").remove();
+            document.getElementById("proj16").remove();
+            document.getElementById("proj17").remove();
+            document.getElementById("proj18").remove();
+            document.getElementById("proj19").remove();
+            document.getElementById("proj20").remove();
+            document.getElementById("proj21").remove();
+            document.getElementById("fight").style.width = "90%";
+            document.getElementById("fight").style.height = "15%";
+            document.getElementById("fight").style.left = "5%";
+            document.getElementById("fight").style.right = "5%";
+            document.getElementById("fight").style.top = "60%";
+            document.getElementById("enemy").style.top = "5%";
+            document.getElementById("enemy").style.height = "50%";
+            ftxt = "* ouch that hurt. NOT";
+            ea = 0;
+          }, 5900);
+        }
+      }
+
+      function isTouching(element1, element2) {
+        // from chatgpt because my tiny brain cant handle the math
+        const rect1 = element1.getBoundingClientRect();
+        const rect2 = element2.getBoundingClientRect();
+
+        return (
+          rect1.left < rect2.right &&
+          rect1.right > rect2.left &&
+          rect1.top < rect2.bottom &&
+          rect1.bottom > rect2.top
+        );
+      }
+    </script>
+  </body>
+</html>
