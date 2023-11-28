@@ -262,6 +262,22 @@
       #slide {
         transition: 6s;
       }
+      #person2 {
+        position: absolute;
+        left: 0%;
+        top: 0%;
+        width: 20%;
+        height: 101%;
+        border-style: solid;
+        border-width: 3%;
+        border-right-color: white;
+        border-left-color: black;
+        border-top-color: black;
+      }
+      #talk {
+        position: absolute;
+        left: 22%;
+      }
     </style>
   </head>
   <body onkeydown="keyd()" onkeyup="keyu()">
@@ -309,8 +325,15 @@
         alt="enemy you are facing"
       />
     </div>
-    <div id="talk" class="fight">
-      * hello I am ?? the one person who lives in the ruins
+    <div id="talks" class="fight">
+      <img
+        id="person2"
+        src="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/flowerM.gif?v=1700332167639"
+        alt="person whos talking"
+      />
+      <font id="talk">
+        * hello I am ?? the one person who lives in the ruins</font
+      >
     </div>
     <script>
       var fight = 0;
@@ -325,7 +348,7 @@
       var y = 47;
       var g = 0;
       var b = 0;
-      var lvl = 0;
+      var lvl = 3;
       var isImageChanged = false;
       var ehp = 0;
       var talks = 0;
@@ -341,7 +364,7 @@
       var inItems = 0;
       var ea = 0;
       var inText = 0;
-      var InTexts = 0;
+      var inTexts = 0;
       var Ttxt = "";
       if (lvl > 0) {
         document.getElementById("intro").style.visibility = "hidden";
@@ -692,8 +715,12 @@
           lvl = 4;
           inTalks = 0;
         }
-        if (lvl == 3 && y == 66) {
-          inTalks = 1;
+        if (lvl == 3 && y >= 66) {
+          inTexts = 1;
+          inText = 1;
+        } else if (lvl == 3 && y >= 40) {
+          inTexts = 2;
+          inText = 1;
         }
         if (ea == 1) {
           const proj1 = document.getElementById("proj1");
@@ -793,7 +820,7 @@
         }
         if (lvl == 3) {
           document.getElementById("map").src =
-            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/map3.jpg?v=1699563465102";
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/map3.jpg?v=1700102631968";
         }
 
         if (inText == 0) {
@@ -802,9 +829,17 @@
           document.getElementById("talk").style.visibility = "visible";
         }
 
-        document.getElementById("talk").style.innerHTML = Ttxt;
-        if (lvl == 3 && inTalks == 1) {
-          Ttxt = "* hello I am  the one person who lives in the ruins";
+        document.getElementById("talk").innerHTML = Ttxt;
+        if (lvl == 3 && inTexts == 1) {
+          document.getElementById("person2").scr =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/torianial.png?v=1700332167639";
+          Ttxt = "* hello I am torianial the one person who lives in the ruins";
+        }
+        if (lvl == 3 && inTexts == 2) {
+          document.getElementById("person2").scr =
+            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/torianial.png?v=1700332167639";
+          Ttxt =
+            "The ruins is a crazy place of puzzles and monsters so alow me to guide you through it.";
         }
       }
       setInterval(game, 1);
