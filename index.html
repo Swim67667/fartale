@@ -276,7 +276,8 @@
       }
       #talk {
         position: absolute;
-        left: 22%;
+        left: 2%;
+        right: 2%;
       }
     </style>
   </head>
@@ -326,11 +327,6 @@
       />
     </div>
     <div id="talks" class="fight">
-      <img
-        id="person2"
-        src="https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/flowerM.gif?v=1700332167639"
-        alt="person whos talking"
-      />
       <font id="talk">
         * hello I am ?? the one person who lives in the ruins</font
       >
@@ -718,9 +714,26 @@
         if (lvl == 3 && y >= 66) {
           inTexts = 1;
           inText = 1;
+        }
+        if (lvl == 3 && y >= 66) {
+          inTexts = 1;
+          inText = 1;
         } else if (lvl == 3 && y >= 40) {
           inTexts = 2;
           inText = 1;
+        } else if (lvl == 3 && y >= 30) {
+          inTexts = 0;
+          inText = 0;
+        }
+
+        if (lvl == 3 && y <= 22.5 && x >= 45 && x <= 50) {
+          player.y += 1;
+        }
+        if (lvl == 3 && x >= 43.5 && y <= 21 && x <= 50) {
+          player.x -= 1;
+        }
+        if (lvl == 3 && x >= 45 && y <= 21 && x <= 51.5) {
+          player.x += 1;
         }
         if (ea == 1) {
           const proj1 = document.getElementById("proj1");
@@ -824,22 +837,20 @@
         }
 
         if (inText == 0) {
+          document.getElementById("talks").style.visibility = "hidden";
           document.getElementById("talk").style.visibility = "hidden";
         } else {
+          document.getElementById("talks").style.visibility = "visible";
           document.getElementById("talk").style.visibility = "visible";
         }
 
         document.getElementById("talk").innerHTML = Ttxt;
         if (lvl == 3 && inTexts == 1) {
-          document.getElementById("person2").scr =
-            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/torianial.png?v=1700332167639";
           Ttxt = "* hello I am torianial the one person who lives in the ruins";
         }
         if (lvl == 3 && inTexts == 2) {
-          document.getElementById("person2").scr =
-            "https://cdn.glitch.global/885a2083-8723-4360-910a-0c2536071fee/torianial.png?v=1700332167639";
           Ttxt =
-            "The ruins is a crazy place of puzzles and monsters so alow me to guide you through it.";
+            "* The ruins is a crazy place of puzzles and monsters so alow me to guide you through it.";
         }
       }
       setInterval(game, 1);
